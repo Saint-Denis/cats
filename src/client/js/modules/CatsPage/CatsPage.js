@@ -8,7 +8,7 @@ import { selectTypeOptions, selectOrderOptions } from "./config";
 import api from "./api";
 
 class CatsPage extends Component<> {
-  mounted: false;
+  mounted;
 
   state = {
     categories: [],

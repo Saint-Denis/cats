@@ -65,18 +65,37 @@ router.post(
 //Add to favourite
 router.put("/like/:id", auth, async (req, res) => {
   try {
-    let user = await User.findOne({ email });
-    const isLiked = user.favouritesIds.filter(favourite => favourite.catsId === req.params.id)
+    let user = await User.findById(req.user.id).select("-password");
+
+    const isLiked = (user.favouritesIds.filter(favourite => favourite.catsId.toString() === req.params.id)).length > 1
 
     if (isLiked) {
-      return res.json(400).json({msg: "Котик уже добавлен в избранное"})
+      return res.status(400).json({msg: "Котик уже добавлен в избранное"})
     }
 
     user.favouritesIds.push({ catsId: req.params.id })
-
     await user.save()
+    res.json(user.favouritesIds)
+  } catch (error) {
+    res.status(500).send("Ошибка сервера")
+  }
+})
 
-    res.jsom(user.favouritesIds)
+//remove from favourite
+router.put("/unlike/:id", auth, async (req, res) => {
+  try {
+    let user = await User.findById(req.user.id).select("-password");
+
+    const isNoLiked = (user.favouritesIds.filter(favourite => favourite.catsId.toString() === req.params.id)).length === 0
+
+    if (isNoLiked) {
+      return res.status(400).json({msg: "Котик еще не был добавлен в избранное"})
+    }
+
+    const removeIndex = user.favouritesIds.map(favourite => favourite.catsId.toString()).indexOf(req.params.id)
+    user.favouritesIds.splice(removeIndex, 1)
+    await user.save()
+    res.json(user.favouritesIds)
   } catch (error) {
     res.status(500).send("Ошибка сервера")
   }
