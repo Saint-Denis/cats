@@ -1,4 +1,5 @@
 const express = require("express");
+const auth = require("../../middleware/auth");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -60,5 +61,25 @@ router.post(
     }
   }
 );
+
+//Add to favourite
+router.put("/like/:id", auth, async (req, res) => {
+  try {
+    let user = await User.findOne({ email });
+    const isLiked = user.favouritesIds.filter(favourite => favourite.catsId === req.params.id)
+
+    if (isLiked) {
+      return res.json(400).json({msg: "Котик уже добавлен в избранное"})
+    }
+
+    user.favouritesIds.push({ catsId: req.params.id })
+
+    await user.save()
+
+    res.jsom(user.favouritesIds)
+  } catch (error) {
+    res.status(500).send("Ошибка сервера")
+  }
+})
 
 module.exports = router;

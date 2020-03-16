@@ -22,4 +22,4 @@ app.get("*", (req, res) => {
   res.sendfile("./public/index.html");
 });
 
-server.listen(port, () => console.log("server started"));
+app.listen(port, () => console.log("server started"));

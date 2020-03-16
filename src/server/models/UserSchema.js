@@ -14,6 +14,9 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  favouritesIds: [{
+    catsId : String,
+  }],
   date: {
     type: Date,
     default: Date.now()
