@@ -1,0 +1,52 @@
+.cat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &--bigger {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 550px;
+    .cat__pic {
+      height: 450px;
+      img {
+        height: 100%;
+      }
+    }
+  }
+  &__pic {
+    position: relative;
+    height: 200px;
+    margin: 0;
+    overflow: hidden;
+    @media screen and (max-width: 500px) {
+      width: 100%;
+    }
+    img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+  }
+
+  &__favourite {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    svg {
+      width: 30px;
+      stroke: $color-blue;
+      stroke-width: 2px;
+      fill: $color-white;
+      transition: fill 0.2s ease-in-out;
+      transition-delay: 0.2s;
+    }
+    &--active {
+      svg {
+        fill: $color-yellow;
+      }
+    }
+  }
+}

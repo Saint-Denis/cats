@@ -1,0 +1,15 @@
+dist
+*.log
+yarn.lock
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+node_modules
+/node_modules/
+.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

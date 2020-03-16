@@ -1,0 +1,43 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 40px;
+  background: $color-bg;
+  border: 1px solid $color-dirty-white;
+  &__field {
+    position: relative;
+    width: 100%;
+    margin-bottom: 6px;
+    color: $color-black;
+    span {
+      color: rgba($color-black, 0.7);
+    }
+  }
+  .btn {
+    width: 100%;
+  }
+  label {
+    display: none;
+  }
+  input {
+    width: 100%;
+    height: 36px;
+    padding: 9px 0 7px 8px;
+    font-size: 14px;
+    line-height: 18px;
+    text-overflow: ellipsis;
+    color: #262626;
+    background: $color-bg;
+    border: 1px solid $color-dirty-white;
+    overflow: hidden;
+  }
+  .error {
+    text-align: center;
+    color: red;
+    p {
+      font-size: 14px;
+    }
+  }
+}

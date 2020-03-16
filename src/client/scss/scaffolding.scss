@@ -1,0 +1,72 @@
+@import "helpers/fonts.scss";
+@import "helpers/vars.scss";
+@import url("https://fonts.googleapis.com/css?family=Rubik:300,400");
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  margin-left: auto;
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
+  line-height: 1.15;
+  font-weight: 500;
+  background: url("/src/client/images/cat-bg.jpg") no-repeat 50% 50%;
+  background-size: cover;
+  background-attachment: fixed;
+  backdrop-filter: blur(7px);
+  color: $color-black;
+  @media screen and (max-width: 600px) {
+    font-size: 12px;
+  }
+}
+
+.page-content {
+  display: flex;
+  padding-top: 20px;
+}
+
+h1 {
+  margin: 0 0 30px 0;
+  font-family: "Billabong Regular", serif;
+  font-size: 100px;
+  text-align: center;
+  color: $color-yellow;
+  @media screen and (max-width: 600px) {
+    font-size: 56px;
+  }
+}
+
+p {
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 30px;
+  @media screen and (max-width: 600px) {
+    font-size: 24px;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
